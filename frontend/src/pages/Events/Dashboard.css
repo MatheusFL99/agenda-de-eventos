@@ -1,0 +1,78 @@
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.title-container h2 {
+  border-left: 4px solid #16479d;
+  padding: 10px;
+}
+
+.title-container button {
+  text-decoration: none;
+  color: white;
+  width: 10rem;
+  border: 2px solid #16479d;
+  border-radius: 5px;
+  padding: 7px 12px;
+  background-color: #16479d;
+  margin-left: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.title-container button:hover {
+  background-color: white;
+  color: #16479d;
+}
+
+.dashboard h3 {
+  margin-bottom: 1.5em;
+}
+
+.dashboard ul {
+  list-style: none;
+}
+
+.dashboard li {
+  padding: 0 12px;
+  border-bottom: 1px solid #16479d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard a {
+  color: #16479d;
+}
+.dashboard .label {
+  font-weight: bold;
+  color: #16479d;
+  margin: 2em;
+}
+
+.dashboard .actions {
+  display: flex;
+}
+
+.actions a,
+.actions button {
+  text-decoration: none;
+  color: #16479d;
+  border: 2px solid #16479d;
+  border-radius: 5px;
+  padding: 7px 12px;
+  background-color: #fff;
+  margin-left: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.actions a:hover,
+.actions button:hover {
+  background-color: #16479d;
+  color: #fff;
+}

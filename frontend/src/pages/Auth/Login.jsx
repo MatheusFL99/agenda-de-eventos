@@ -1,0 +1,49 @@
+import { useContext } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import '../../components/form/Form.css'
+import Input from '../../components/form/Input'
+
+import { Context } from '../../context/UserContext'
+
+const Login = () => {
+  const [user, setUser] = useState({})
+  const { login } = useContext(Context)
+
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    login(user)
+  }
+
+  return (
+    <section className="form_container">
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <Input
+          text="E-mail"
+          type="email"
+          name="email"
+          placeholder="Digite seu email"
+          handleOnChange={handleChange}
+        />
+        <Input
+          text="Senha"
+          type="password"
+          name="password"
+          placeholder="Digite sua senha"
+          handleOnChange={handleChange}
+        />
+        <input type="submit" value="Entrar" />
+      </form>
+      <p>
+        Ainda não tem conta? <Link to="/register">Clique aqui</Link>
+      </p>
+    </section>
+  )
+}
+
+export default Login
