@@ -22,7 +22,7 @@ const AddEvent = () => {
         return err.respnse.data
       })
     setFlashMessage(data.message, msgType)
-    navigate('/dashboard')
+    navigate('/')
   }
 
   return (
