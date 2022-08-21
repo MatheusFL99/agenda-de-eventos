@@ -1,7 +1,7 @@
 import api from '../../utils/api'
 import '../../components/form/Form.css'
 import '../../components/form/Input.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import { useEffect, useState } from 'react'
 import EventForm from '../../components/form/EventForm'
@@ -9,6 +9,7 @@ import EventForm from '../../components/form/EventForm'
 const EditEvent = () => {
   const [event, setEvent] = useState({})
   const { id } = useParams()
+  const navigate = useNavigate()
   const { setFlashMessage } = useFlashMessage()
   const [token] = useState(localStorage.getItem('token') || '')
 
@@ -32,18 +33,21 @@ const EditEvent = () => {
       })
 
     setFlashMessage(data.message, msgType)
+    navigate('/dashboard')
   }
 
   return (
     <section>
       <h1>Editando o evento: {event.title}</h1>
 
-      {event.title && (
+      {event.title ? (
         <EventForm
           handleSubmit={updateEvent}
           eventData={event}
           btnText="Editar"
         />
+      ) : (
+        <p>Carregando...</p>
       )}
     </section>
   )

@@ -8,7 +8,7 @@ import './Dashboard.css'
 const Dashboard = () => {
   const [events, setEvents] = useState([])
   const { setFlashMessage } = useFlashMessage()
-  const [token] = useState(localStorage.getItem('token') || '')
+  const [token] = useState(localStorage.getItem('token'))
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -46,35 +46,39 @@ const Dashboard = () => {
         <button
           className="btn bold"
           onClick={() => {
-            navigate('/')
+            navigate('/events/new')
           }}
         >
           Criar Evento
         </button>
+        {!token && <p>Carregando...</p>}
       </div>
       {events.length > 0 &&
         events.map(event => (
-          <div className="events-container" key={event._id}>
-            <ul>
-              <li>
-                <span className="bold label">
-                  {event.title} - Data:{' '}
+          <>
+            <div className="events-container">
+              <ul>
+                <li key={event._id}>
+                  <span className="bold label">{event.title}</span>
+                  {event.description}
                   <Moment format="DD/MM/YYYY">{event.start}</Moment>
-                </span>
-                <div className="actions">
-                  <Link to={`/event/edit/${event._id}`}>Editar</Link>
-                  <button
-                    className="btn bold"
-                    onClick={() => {
-                      removeEvent(event._id)
-                    }}
-                  >
-                    Excluir
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
+
+                  <div className="actions">
+                    <Link to={`/event/edit/${event._id}`}>Editar</Link>
+                    <button
+                      className="btn bold"
+                      onClick={() => {
+                        removeEvent(event._id)
+                      }}
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div></div>
+          </>
         ))}
     </div>
   )

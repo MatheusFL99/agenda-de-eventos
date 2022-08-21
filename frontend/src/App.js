@@ -11,6 +11,7 @@ import Register from './pages/Auth/Register'
 import ProtectedRoutes from './ProtectedRoutes'
 import Dashboard from './pages/Events/Dashboard'
 import EditEvent from './pages/Events/EditEvent'
+import AddEvent from './pages/Events/AddEvent'
 
 Modal.setAppElement('#root')
 
@@ -27,6 +28,7 @@ function App() {
                 <Route element={<ProtectedRoutes />}>
                   <Route path="/" element={<Calendar />} />
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/events/new" element={<AddEvent />} />
                   <Route path="/event/edit/:id" element={<EditEvent />} />
                 </Route>
                 <Route path="/login" element={<Login />} />

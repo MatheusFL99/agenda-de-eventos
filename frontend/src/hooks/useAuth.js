@@ -36,24 +36,6 @@ const useAuth = () => {
     setFlashMessage(msgText, msgType)
   }
 
-  async function registerEvent(event) {
-    let msgText = 'Evento criado com sucesso!'
-    let msgType = 'success'
-
-    try {
-      const data = await api.post('/events/create', event).then(response => {
-        return response.data
-      })
-
-      await authUser(data)
-    } catch (err) {
-      msgText = err.response.data.message
-      msgType = 'error'
-    }
-
-    setFlashMessage(msgText, msgType)
-  }
-
   const login = async user => {
     let msgText = 'Login realizado com sucesso!'
     let msgType = 'success'
@@ -76,7 +58,8 @@ const useAuth = () => {
     setAuthenticated(true)
 
     localStorage.setItem('token', JSON.stringify(data.token))
-    navigate('/')
+    await navigate('/')
+    window.location.reload()
   }
 
   const logout = () => {
@@ -94,7 +77,6 @@ const useAuth = () => {
   return {
     authenticated,
     register,
-    registerEvent,
     logout,
     login
   }
