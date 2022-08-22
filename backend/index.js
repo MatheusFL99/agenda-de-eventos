@@ -12,18 +12,16 @@ dotenv.config()
 const app = express()
 database()
 
-// CORS FIX
+// config json
+app.use(express.json())
+
+// cors
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', '*')
   res.header('Access-Control-Allow-Headers', '*')
   next()
 })
-
-// config json
-app.use(express.json())
-
-// cors
 app.unsubscribe(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 // imagens para pasta public

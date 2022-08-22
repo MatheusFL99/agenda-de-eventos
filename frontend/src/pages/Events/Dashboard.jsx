@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     api
-      .get('/events/myEvents', token)
+      .get('/events/myevents', token)
       .then(response => {
         setEvents(response.data.events)
       })

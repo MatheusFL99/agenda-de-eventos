@@ -11,7 +11,7 @@ const EventForm = ({ handleSubmit, eventData, btnText }) => {
 
   const submit = e => {
     e.preventDefault()
-    console.log(event)
+    //console.log(event)
     handleSubmit(event)
   }
 

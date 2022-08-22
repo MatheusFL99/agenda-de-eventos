@@ -1,4 +1,3 @@
-import Modal from 'react-modal'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Calendar from './components/Calendar'
 import Navbar from './components/layout/Navbar'
@@ -12,8 +11,6 @@ import ProtectedRoutes from './ProtectedRoutes'
 import Dashboard from './pages/Events/Dashboard'
 import EditEvent from './pages/Events/EditEvent'
 import AddEvent from './pages/Events/AddEvent'
-
-Modal.setAppElement('#root')
 
 function App() {
   return (

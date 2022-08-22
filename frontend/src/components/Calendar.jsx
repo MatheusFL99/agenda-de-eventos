@@ -1,13 +1,12 @@
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import api from '../utils/api'
 
 const Calendar = () => {
   const [events, setEvents] = useState([])
-  const calendarRef = useRef(null)
   const navigate = useNavigate()
 
   const handleDatesSet = async data => {
@@ -29,7 +28,6 @@ const Calendar = () => {
       <div style={{ position: 'relative', zIndex: 0 }}>
         <FullCalendar
           locale="pt-br"
-          ref={calendarRef}
           events={events}
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
