@@ -77,7 +77,7 @@ module.exports = class UserController {
 
     const user = await User.findOne({ email: email })
     if (!user) {
-      res.status(422).json({ message: 'Email não encontrado!' })
+      res.status(422).json({ message: 'Email ou senha inválidos' })
       return
     }
 
@@ -85,7 +85,7 @@ module.exports = class UserController {
     const checkPassword = await bcrypt.compare(password, user.password)
 
     if (!checkPassword) {
-      res.status(422).json({ message: 'Senha inválida!' })
+      res.status(422).json({ message: 'Email ou senha inválidos' })
       return
     }
 
